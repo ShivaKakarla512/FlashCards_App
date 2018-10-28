@@ -7,7 +7,7 @@ A more complex flashcards application that allows the user to enter their own qu
 
 ### App Walk-through
 
-<img src="YOUR_GIF_URL_HERE" width=200><br>
+<img src="http://g.recordit.co/1ndGGKKaO7.gif" width=200><br>
 
 ## Required
 - [x] User can click on a ‘+’ button that takes the user to new ‘Add Card Screen’
@@ -30,7 +30,7 @@ A simple app that displays a question and when the question is clicked, reveals 
 
 ### App Walk-through
 
-<img src="http://g.recordit.co/1ndGGKKaO7.gif" width=200><br>
+<img src="http://g.recordit.co/QEK8v9Sk7V.gif" width=200><br>
 
 ## Required
 - [x] Create New Project in Android Studio
