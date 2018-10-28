@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomizableQuestion">
+
+    <ImageView
+        android:id="@+id/cancel_question"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/cancel_button"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/save_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/save_button"
+        android:visibility="visible" />
+
+
+    <EditText
+        android:id="@+id/question"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Enter The Question Here" />
+
+    <EditText
+        android:id="@+id/correct_answer"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="750dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Enter The Answer Here" />
+
+
+</android.support.constraint.ConstraintLayout>

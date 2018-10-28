@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
+    android:background="@drawable/general_background"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,6 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/card_background"
+        android:fontFamily="@font/suez_one"
         android:gravity="center"
         android:text="Who is the 44th President of the United States?"
         android:textColor="#ffffff"
@@ -28,6 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/card_background2"
+        android:fontFamily="@font/suez_one"
         android:gravity="center"
         android:text="Barack Obama"
         android:textColor="#ffffff"
@@ -36,58 +38,66 @@
 
     <TextView
         android:id="@+id/answer_choice_4"
-        android:layout_width="266dp"
+        android:layout_width="230dp"
         android:layout_height="33dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:background="@drawable/card_background3"
+        android:fontFamily="@font/poiret_one"
         android:gravity="center"
         android:text="Donald Trump"
         android:textColor="#000000"
         android:textSize="25sp"
+        android:textStyle="bold"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/answer_choice_3"
-        android:layout_width="266dp"
+        android:layout_width="230dp"
         android:layout_height="33dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="75dp"
         android:background="@drawable/card_background3"
+        android:fontFamily="@font/poiret_one"
         android:gravity="center"
         android:text="Barack Obama"
         android:textColor="#000000"
         android:textSize="25sp"
+        android:textStyle="bold"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/answer_choice_2"
-        android:layout_width="266dp"
+        android:layout_width="230dp"
         android:layout_height="33dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="128dp"
         android:background="@drawable/card_background3"
+        android:fontFamily="@font/poiret_one"
         android:gravity="center"
         android:text="George H. W. Bush"
         android:textColor="#000000"
         android:textSize="25sp"
+        android:textStyle="bold"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/answer_choice_1"
-        android:layout_width="266dp"
+        android:layout_width="230dp"
         android:layout_height="33dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="177dp"
         android:background="@drawable/card_background3"
+        android:fontFamily="@font/poiret_one"
         android:gravity="center"
         android:text="Bill Clinton"
         android:textColor="#000000"
         android:textSize="25sp"
+        android:textStyle="bold"
         android:visibility="gone" />
 
     <ImageView
@@ -107,4 +117,41 @@
         android:src="@drawable/closed_eye"
         android:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/add_question"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/add_sign"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/edit_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/edit_button"
+        android:visibility="visible" />
+
+    <android.support.design.widget.CoordinatorLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/c_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="visible"
+        tools:context=".NewActivity">
+
+    </android.support.design.widget.CoordinatorLayout>
+
 </android.widget.RelativeLayout>
+
