@@ -139,6 +139,28 @@
         android:src="@drawable/edit_button"
         android:visibility="visible" />
 
+    <ImageView
+        android:id="@+id/next_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="230dp"
+        android:layout_marginLeft="325dp"
+        android:src="@drawable/next_button"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/delete_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="230dp"
+        android:layout_marginRight="325dp"
+        android:src="@drawable/delete_button"
+        android:visibility="visible" />
+
     <android.support.design.widget.CoordinatorLayout
 
         xmlns:android="http://schemas.android.com/apk/res/android"
