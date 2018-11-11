@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        else if (requestCode == 200) { // this 100 needs to match the 100 we used when we called startActivityForResult!
+        else if (requestCode == 200) { // this 200 needs to match the 100 we used when we called startActivityForResult!
             String string1 = data.getExtras().getString("string1"); // 'string1' needs to match the key we used when we put the string in the Intent
             String string2 = data.getExtras().getString("string2");
             String string3 = data.getExtras().getString("string3");
