@@ -7,7 +7,7 @@ Now, the app can save Flashcards made by the user and allows the user to both ed
 
 ### App Walk-though
 
-<img src="YOUR_GIF_URL_HERE" width=200><br>
+<img src="Yhttp://g.recordit.co/XJoCWbQhmd.gif" width=200><br>
 
 ## Required
 - [x] User can create a card and still see their created card when the app is relaunched.
