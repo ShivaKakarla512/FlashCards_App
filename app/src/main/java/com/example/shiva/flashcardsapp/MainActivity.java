@@ -1,15 +1,25 @@
 package com.example.shiva.flashcardsapp;
 
+import android.animation.Animator;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+
+import com.plattysoft.leonids.ParticleSystem;
+
 import java.util.List;
 import java.util.Random;
 
+@TargetApi(21)
 public class MainActivity extends AppCompatActivity {
 
     FlashcardDatabase flashcardDatabase;
@@ -22,8 +32,19 @@ public class MainActivity extends AppCompatActivity {
         return rand.nextInt((maxNumber - minNumber) + 1) + minNumber;
     }
 
+    CountDownTimer countDownTimer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        countDownTimer = new CountDownTimer(16000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                ((TextView) findViewById(R.id.timer)).setText("" + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+            }
+        };
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -43,8 +64,29 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 (findViewById(R.id.flashcard_answer)).setVisibility(View.VISIBLE);
                 (findViewById(R.id.flashcard_question)).setVisibility(View.GONE);
+
+                final View questionSideView = findViewById(R.id.flashcard_question);
+                final View answerSideView = findViewById(R.id.flashcard_answer);
+
+                // get the center for the clipping circle
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+
+                // get the final radius for the clipping circle
+                float finalRadius = (float) Math.hypot(cx, cy);
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+
+                // hide the question and show the answer to prepare for playing the animation!
+                questionSideView.setVisibility(View.INVISIBLE);
+                answerSideView.setVisibility(View.VISIBLE);
+
+                anim.setDuration(3000);
+                anim.start();
             }
         });
 
@@ -58,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.answer_choice_1).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 (findViewById(R.id.answer_choice_1)).setBackgroundColor(getResources().getColor(R.color.Green));
+                new ParticleSystem(MainActivity.this, 100, R.drawable.confetti, 3000)
+                        .setSpeedRange(0.2f, 0.5f)
+                        .oneShot((findViewById(R.id.answer_choice_1)), 100);
             }
         });
 
@@ -151,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("stringDefault4", "Enter The Wrong Answer Here");
                 intent.putExtra("stringDefault5", "Enter The Wrong Answer Here");
                 MainActivity.this.startActivityForResult(intent, 100);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
@@ -172,12 +218,37 @@ public class MainActivity extends AppCompatActivity {
                 intent2.putExtra("stringDefault4", ((TextView) findViewById(R.id.answer_choice_3)).getText().toString());
                 intent2.putExtra("stringDefault5", ((TextView) findViewById(R.id.answer_choice_4)).getText().toString());
                 MainActivity.this.startActivityForResult(intent2, 200);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
         findViewById(R.id.next_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                final Animation leftOutAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.left_out);
+                final Animation rightInAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.right_in);
+
+                leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // this method is called when the animation first starts
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // this method is called when the animation is finished playing
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // we don't need to worry about this method
+                    }
+                });
+
+                findViewById(R.id.flashcard_question).startAnimation(leftOutAnim);
+                findViewById(R.id.flashcard_question).startAnimation(rightInAnim);
+
                 allFlashcards = flashcardDatabase.getAllCards();
 
                 (findViewById(R.id.flashcard_question)).setVisibility(View.VISIBLE);
